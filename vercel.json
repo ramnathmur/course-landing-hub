@@ -1,10 +1,10 @@
 {
-  "version": 2,
-  "public": true,
-  "buildCommand": "echo 'Static site'",
-  "outputDirectory": "./",
-  "cleanUrls": false,
-  "routes": [
-    { "src": "/.*", "dest": "/index.html" }
+  "buildCommand": "true",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
   ]
 }
