@@ -1,518 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEURAL HUB — Educational Intelligence for Practitioners</title>
-  <style>
-    /* ═══════════════════════════════════════════════════════════════════════
-       DESIGN SYSTEM TOKENS
-       ═══════════════════════════════════════════════════════════════════════ */
-    :root {
-      /* Color Palette */
-      --bg-primary: #f9fafb;
-      --bg-secondary: #f3f4f6;
-      --text-primary: #1f2937;
-      --text-secondary: #374151;
-      --text-muted: #6b7280;
-      --border: #e5e7eb;
-
-      /* Accent Colors */
-      --accent-warm: #f59e0b;    /* Amber - primary CTAs */
-      --accent-teal: #14b8a6;    /* Teal - secondary elements */
-      --accent-cyan: #06b6d4;    /* Cyan - tertiary accents */
-
-      /* Shadows */
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07);
-
-      /* Spacing */
-      --spacing-xs: 4px;
-      --spacing-sm: 8px;
-      --spacing-md: 16px;
-      --spacing-lg: 24px;
-      --spacing-xl: 32px;
-      --spacing-2xl: 48px;
-      --spacing-3xl: 64px;
-      --spacing-4xl: 80px;
-
-      /* Typography */
-      --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       GLOBAL STYLES
-       ═══════════════════════════════════════════════════════════════════════ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-family);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       HEADER / NAVIGATION
-       ═══════════════════════════════════════════════════════════════════════ */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(4px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .header-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 var(--spacing-lg);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
-      color: var(--accent-warm);
-    }
-
-    nav {
-      display: flex;
-      gap: var(--spacing-lg);
-      align-items: center;
-    }
-
-    nav a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: var(--accent-warm);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       HERO SECTION
-       ═══════════════════════════════════════════════════════════════════════ */
-    .hero {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: var(--spacing-3xl) var(--spacing-lg);
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: var(--spacing-md);
-      color: var(--text-primary);
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-2xl);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: var(--spacing-md);
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       BUTTONS
-       ═══════════════════════════════════════════════════════════════════════ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 28px;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-      font-family: var(--font-family);
-      min-height: 44px;
-    }
-
-    .btn-primary {
-      background: var(--accent-warm);
-      color: white;
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:hover {
-      background: #dc2626;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .btn-secondary {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--border);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       COURSES SECTION
-       ═══════════════════════════════════════════════════════════════════════ */
-    .section {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: var(--spacing-4xl) var(--spacing-lg);
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: var(--spacing-lg);
-      color: var(--text-primary);
-    }
-
-    .section-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-2xl);
-    }
-
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--spacing-lg);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       COURSE CARD
-       ═══════════════════════════════════════════════════════════════════════ */
-    .course-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .course-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-2px);
-    }
-
-    .course-icon {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .course-content {
-      padding: var(--spacing-lg);
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .course-status {
-      display: inline-block;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-radius: 4px;
-      margin-bottom: var(--spacing-md);
-      width: fit-content;
-    }
-
-    .status-live {
-      background: #dcfce7;
-      color: #15803d;
-    }
-
-    .status-coming {
-      background: #f3f4f6;
-      color: #4b5563;
-    }
-
-    .course-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: var(--spacing-sm);
-      color: var(--text-primary);
-    }
-
-    .course-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-lg);
-      flex: 1;
-    }
-
-    .course-duration {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .course-cta {
-      align-self: flex-start;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════════════════════════════════════ */
-    footer {
-      background: var(--text-primary);
-      color: white;
-      padding: var(--spacing-3xl) var(--spacing-lg);
-      margin-top: var(--spacing-4xl);
-    }
-
-    .footer-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-2xl);
-      margin-bottom: var(--spacing-2xl);
-    }
-
-    .footer-section h3 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: var(--spacing-md);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      opacity: 0.8;
-    }
-
-    .footer-section a {
-      display: block;
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      font-size: 14px;
-      margin-bottom: var(--spacing-sm);
-      transition: color 0.2s;
-    }
-
-    .footer-section a:hover {
-      color: white;
-      color: var(--accent-warm);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: var(--spacing-lg);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      opacity: 0.7;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       RESPONSIVE DESIGN
-       ═══════════════════════════════════════════════════════════════════════ */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .hero-ctas {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .trust-signals {
-        gap: var(--spacing-lg);
-      }
-
-      nav {
-        display: none;
-      }
-
-      .section {
-        padding: var(--spacing-2xl) var(--spacing-lg);
-      }
-
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#0a0e27">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid dots -->
+    <rect width="1200" height="800" fill="#0a0e27"/>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgba(0,217,255,0.18)"/>
+    </pattern>
+    <rect width="1200" height="800" fill="url(#dots)"/>
+    <!-- Logo mark -->
+    <rect x="80" y="48" width="34" height="34" fill="none" stroke="#00d9ff" stroke-width="2"/>
+    <rect x="91" y="59" width="12" height="12" fill="#00d9ff"/>
+    <!-- Hero title -->
+    <text x="80" y="220" font-family="monospace" font-size="72" font-weight="900" fill="white" letter-spacing="-1">LEARN THE</text>
+    <text x="80" y="310" font-family="monospace" font-size="72" font-weight="900" fill="#00d9ff" letter-spacing="-1">INTELLIGENCE</text>
+    <text x="80" y="400" font-family="monospace" font-size="72" font-weight="900" fill="white" letter-spacing="-1">STACK</text>
+    <!-- Accent line -->
+    <line x1="0" y1="480" x2="1200" y2="480" stroke="url(#divider)" stroke-width="1"/>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="40%" stop-color="#00d9ff" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#d946ef" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+    <!-- Course card silhouettes -->
+    <rect x="80"  y="520" width="490" height="220" fill="#0d1130" rx="0"/>
+    <rect x="630" y="520" width="490" height="220" fill="#0d1130" rx="0"/>
+    <rect x="80"  y="520" width="3" height="60" fill="#00d9ff"/>
+    <rect x="80"  y="520" width="60" height="3" fill="#00d9ff"/>
+    <rect x="630" y="520" width="3" height="60" fill="#d946ef"/>
+    <rect x="630" y="520" width="60" height="3" fill="#d946ef"/>
+  </svg>
+</template>
 </head>
 <body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #0a0e27; color: #e0e0e0; min-height: 100vh; overflow-x: hidden; font-family: 'Space Mono', monospace; }
+    ::selection { background: rgba(0,217,255,0.25); color: #fff; }
+    a { text-decoration: none; }
+    @keyframes glow-pulse {
+      0%, 100% { text-shadow: 0 0 20px rgba(0,217,255,0.5), 0 0 40px rgba(0,217,255,0.2); }
+      50% { text-shadow: 0 0 50px rgba(0,217,255,1), 0 0 100px rgba(0,217,255,0.5), 0 0 160px rgba(0,217,255,0.2); }
+    }
+    @keyframes scan-line {
+      0% { top: -4px; }
+      100% { top: 100vh; }
+    }
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes live-pulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(0,217,255,0.4); }
+      50% { box-shadow: 0 0 18px rgba(0,217,255,0.9), 0 0 36px rgba(0,217,255,0.3); }
+    }
+    @keyframes corner-flicker {
+      0%, 90%, 100% { opacity: 1; }
+      92%, 96% { opacity: 0.4; }
+    }
+  </style>
+</helmet>
+
+{{ scanline }}
+
+<div style="min-height: 100vh; background: #0a0e27; background-image: radial-gradient(rgba(0,217,255,0.065) 1px, transparent 1px); background-size: 40px 40px; position: relative;">
+
+  <!-- Vignette overlay -->
+  <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 1;"></div>
+
   <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <a href="#" class="logo">NEURAL <span>HUB</span></a>
-      <nav>
-        <a href="#courses">Courses</a>
-        <a href="#about">About</a>
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(10,14,39,0.9); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(0,217,255,0.1);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 max(24px, 4vw); height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+
+      <!-- Logo -->
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 34px; height: 34px; border: 2px solid #00d9ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(0,217,255,0.35), inset 0 0 10px rgba(0,217,255,0.08); flex-shrink: 0;">
+          <div style="width: 11px; height: 11px; background: #00d9ff; box-shadow: 0 0 10px #00d9ff;"></div>
+        </div>
+        <div>
+          <div style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; color: #ffffff; line-height: 1;">NEURAL HUB</div>
+          <div style="font-size: 9px; letter-spacing: 0.14em; color: rgba(0,217,255,0.45); margin-top: 3px; line-height: 1;">INTELLIGENCE SYSTEMS</div>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <nav style="display: flex; align-items: center; gap: 32px;">
+        <a href="#courses" style="font-size: 11px; letter-spacing: 0.14em; color: rgba(224,224,224,0.45); transition: color 0.2s;" style-hover="color: #00d9ff;">COURSES</a>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 7px; height: 7px; background: #00ff41; border-radius: 50%; box-shadow: 0 0 8px #00ff41, 0 0 16px rgba(0,255,65,0.4);"></div>
+          <span style="font-size: 10px; letter-spacing: 0.12em; color: rgba(224,224,224,0.3);">1 LIVE</span>
+        </div>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Build Real AI Understanding</h1>
-    <p>From neural network fundamentals to autonomous agents. Seven modules. 34 core concepts. 5,200+ learners. Self-paced.</p>
-    <div class="hero-ctas">
-      <button class="btn btn-primary">Explore Courses</button>
-      <button class="btn btn-secondary">Learn More</button>
+  <!-- HERO -->
+  <section style="padding: max(96px, 11vw) max(24px, 4vw) 72px; max-width: 1240px; margin: 0 auto; animation: fade-in-up 0.85s ease both; position: relative; z-index: 2;">
+
+    <!-- Pre-label -->
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
+      <div style="width: 36px; height: 1px; background: linear-gradient(90deg, transparent, #00d9ff);"></div>
+      <span style="font-size: 10px; letter-spacing: 0.26em; color: rgba(0,217,255,0.65);">EDUCATIONAL INTELLIGENCE SYSTEMS</span>
+      <div style="width: 36px; height: 1px; background: linear-gradient(90deg, #00d9ff, transparent);"></div>
+    </div>
+
+    {{ heroTitle }}
+
+    <p style="font-size: clamp(13px, 1.4vw, 15px); color: rgba(224,224,224,0.55); max-width: 520px; line-height: 2.1; margin-bottom: 52px; text-wrap: pretty;">
+      Rigorous, self-paced courses for practitioners who want to understand AI deeply — not just use it. From LLM internals to autonomous agent architecture.
+    </p>
+
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+      <a href="#courses" style="display: inline-flex; align-items: center; gap: 12px; background: #00d9ff; color: #0a0e27; padding: 14px 38px; font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; transition: all 0.25s ease; box-shadow: 0 0 40px rgba(0,217,255,0.35);" style-hover="box-shadow: 0 0 70px rgba(0,217,255,0.7); transform: translateY(-2px);">
+        EXPLORE COURSES <span style="font-size: 14px;">→</span>
+      </a>
+      <div style="font-size: 10px; color: rgba(224,224,224,0.28); letter-spacing: 0.14em;">// FREE · NO SIGNUP</div>
+    </div>
+
+    <!-- Stat row -->
+    <div style="display: flex; align-items: stretch; gap: 0; margin-top: 72px; flex-wrap: wrap;">
+      <div style="padding-right: 40px;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; color: #00d9ff; line-height: 1;">4</div>
+        <div style="font-size: 10px; letter-spacing: 0.18em; color: rgba(224,224,224,0.35); margin-top: 6px;">COURSES</div>
+      </div>
+      <div style="width: 1px; background: rgba(255,255,255,0.07); margin-right: 40px;"></div>
+      <div style="padding-right: 40px;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; color: #d946ef; line-height: 1;">34+</div>
+        <div style="font-size: 10px; letter-spacing: 0.18em; color: rgba(224,224,224,0.35); margin-top: 6px;">TOPICS</div>
+      </div>
+      <div style="width: 1px; background: rgba(255,255,255,0.07); margin-right: 40px;"></div>
+      <div>
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; color: #00ff41; line-height: 1;">FREE</div>
+        <div style="font-size: 10px; letter-spacing: 0.18em; color: rgba(224,224,224,0.35); margin-top: 6px;">ALWAYS</div>
+      </div>
     </div>
   </section>
 
-  <!-- COURSES SECTION -->
-  <section class="section" id="courses">
-    <h2 class="section-title">Available Courses</h2>
-    <p class="section-description">Choose your learning path. All courses are live and accessible today.</p>
+  <!-- DIVIDER -->
+  <div style="max-width: 1240px; margin: 0 auto; padding: 0 max(24px, 4vw);">
+    <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(0,217,255,0.3) 30%, rgba(217,70,239,0.3) 70%, transparent);"></div>
+  </div>
 
-    <div class="courses-grid">
-      <!-- Course 1: LLM Intelligence -->
-      <div class="course-card">
-        <div class="course-icon">🧠</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
-          <h3 class="course-title">LLM Intelligence & Agent Autonomy</h3>
-          <p class="course-description">From "next-word guesser" to genuine artificial intelligence. A 34-gap curriculum across 7 modules, taking you from foundational theory to autonomous action.</p>
-          <div class="course-duration">7 modules • 34 topics • Self-paced</div>
-          <a href="https://llm-intelligence-course.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
-        </div>
-      </div>
+  <!-- COURSES -->
+  <section id="courses" style="padding: 80px max(24px, 4vw) 120px; max-width: 1240px; margin: 0 auto; position: relative; z-index: 2;">
 
-      <!-- Course 2: Agents Master -->
-      <div class="course-card">
-        <div class="course-icon">🤖</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
-          <h3 class="course-title">Agents Master Course</h3>
-          <p class="course-description">Build and deploy intelligent agents from first principles. Learn agent architecture, tool integration, memory systems, and multi-agent coordination.</p>
-          <div class="course-duration">6 modules • 42 topics • Self-paced</div>
-          <a href="https://agents-master-course.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
-        </div>
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 52px; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <div style="font-size: 10px; letter-spacing: 0.24em; color: rgba(224,224,224,0.3); margin-bottom: 10px;">// COURSE CATALOG</div>
+        <h2 style="font-family: 'Orbitron', sans-serif; font-size: clamp(18px, 2.4vw, 26px); font-weight: 700; color: #ffffff; letter-spacing: 0.07em;">INTELLIGENCE MODULES</h2>
       </div>
+      <div style="border: 1px solid rgba(0,217,255,0.2); padding: 8px 18px; font-size: 10px; letter-spacing: 0.18em; color: rgba(0,217,255,0.45);">4 COURSES LOADED</div>
+    </div>
 
-      <!-- Course 3: Book-to-HTML -->
-      <div class="course-card">
-        <div class="course-icon">📖</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
-          <h3 class="course-title">Book-to-HTML Learning</h3>
-          <p class="course-description">Interactive book readers and flashcard study systems. Deep-dive into classic business and self-improvement books with study materials and reading guides.</p>
-          <div class="course-duration">4 books • Interactive • Self-paced</div>
-          <a href="https://book-to-html.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
-        </div>
-      </div>
+    <!--
+      ╔══════════════════════════════════════════╗
+      ║  HOW TO ADD A NEW COURSE                 ║
+      ║  ──────────────────────────────────────  ║
+      ║  In the logic class (renderVals), copy   ║
+      ║  one of the makeCourse({...}) calls and  ║
+      ║  update: id, title, description,         ║
+      ║  duration, tag, link, accent, r, g, b    ║
+      ║  (r/g/b = RGB values of the accent hex)  ║
+      ╚══════════════════════════════════════════╝
+    -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: 2px; background: rgba(0,217,255,0.07);">
+      <sc-for list="{{ courses }}" as="course" hint-placeholder-count="4">
+        <div style="{{ course.cardBase }}" style-hover="{{ course.cardHover }}">
 
-      <!-- Course 4: AI-first Blueprint -->
-      <div class="course-card">
-        <div class="course-icon">🏗️</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
-          <h3 class="course-title">AI-First Application Development Blueprint</h3>
-          <p class="course-description">Build production-grade AI-native applications. From system design to deployment, learn how to architect applications around LLM capabilities.</p>
-          <div class="course-duration">5 modules • 38 patterns • Self-paced</div>
-          <a href="https://ai-first-blueprint.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
+          <!-- Accent corner brackets -->
+          <div style="{{ course.cornerV }}"></div>
+          <div style="{{ course.cornerH }}"></div>
+
+          <!-- Bottom-right glow orb -->
+          <div style="{{ course.glow }}"></div>
+
+          <!-- Card top row -->
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; position: relative; z-index: 1;">
+            <span style="font-size: 10px; letter-spacing: 0.22em; color: rgba(224,224,224,0.3);">MODULE {{ course.id }}</span>
+            <span style="{{ course.tagStyle }}">{{ course.tag }}</span>
+          </div>
+
+          <!-- Title -->
+          <h3 style="font-family: 'Orbitron', sans-serif; font-size: clamp(15px, 1.7vw, 20px); font-weight: 700; color: #ffffff; line-height: 1.38; margin-bottom: 16px; letter-spacing: 0.03em; position: relative; z-index: 1; text-wrap: pretty;">{{ course.title }}</h3>
+
+          <!-- Description -->
+          <p style="font-size: 13px; color: rgba(224,224,224,0.52); line-height: 1.9; margin-bottom: 32px; position: relative; z-index: 1; text-wrap: pretty;">{{ course.description }}</p>
+
+          <!-- Meta -->
+          <div style="display: flex; align-items: center; gap: 22px; margin-bottom: 36px; position: relative; z-index: 1; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="{{ course.dot }}"></div>
+              <span style="font-size: 11px; color: rgba(224,224,224,0.38); letter-spacing: 0.1em;">{{ course.duration }}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 5px; height: 5px; background: rgba(255,255,255,0.12); flex-shrink: 0;"></div>
+              <span style="font-size: 11px; color: rgba(224,224,224,0.38); letter-spacing: 0.1em;">PRACTITIONER</span>
+            </div>
+          </div>
+
+          <!-- Launch button -->
+          <div style="position: relative; z-index: 1;">
+            <a href="{{ course.link }}" target="_blank" style="{{ course.btn }}" style-hover="{{ course.btnHover }}">LAUNCH COURSE →</a>
+          </div>
+
         </div>
-      </div>
+      </sc-for>
+    </div>
+
+    <!-- More coming note -->
+    <div style="margin-top: 40px; border: 1px dashed rgba(0,217,255,0.1); padding: 20px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+      <div style="width: 4px; height: 4px; background: rgba(0,217,255,0.35);"></div>
+      <span style="font-size: 10px; letter-spacing: 0.2em; color: rgba(224,224,224,0.22);">MORE MODULES LOADING INTO THE SYSTEM</span>
+      <div style="width: 4px; height: 4px; background: rgba(0,217,255,0.35);"></div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-section">
-        <h3>Courses</h3>
-        <a href="https://llm-intelligence-course.vercel.app">LLM Intelligence</a>
-        <a href="https://agents-master-course.vercel.app">Agents Master</a>
-        <a href="https://book-to-html.vercel.app">Book-to-HTML</a>
-        <a href="https://ai-first-blueprint.vercel.app">AI-first Blueprint</a>
+  <footer style="border-top: 1px solid rgba(0,217,255,0.07); padding: 44px max(24px, 4vw); position: relative; z-index: 2;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); margin-bottom: 6px;">NEURAL HUB</div>
+        <div style="font-size: 10px; color: rgba(224,224,224,0.18); letter-spacing: 0.1em;">// Educational intelligence for practitioners</div>
       </div>
-
-      <div class="footer-section">
-        <h3>Resources</h3>
-        <a href="#">Documentation</a>
-        <a href="#">FAQ</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
+      <div style="display: flex; gap: 28px; align-items: center;">
+        <a href="https://github.com" target="_blank" style="font-size: 11px; color: rgba(224,224,224,0.28); letter-spacing: 0.12em; transition: color 0.2s;" style-hover="color: #00d9ff;">GITHUB</a>
+        <div style="width: 1px; height: 14px; background: rgba(255,255,255,0.07);"></div>
+        <a href="https://llm-intelligence-course.vercel.app" target="_blank" style="font-size: 11px; color: rgba(0,217,255,0.35); letter-spacing: 0.12em; transition: color 0.2s;" style-hover="color: #00d9ff;">LLM COURSE ↗</a>
+        <div style="width: 1px; height: 14px; background: rgba(255,255,255,0.07);"></div>
+        <span style="font-size: 10px; color: rgba(224,224,224,0.18); letter-spacing: 0.1em;">2026</span>
       </div>
-
-      <div class="footer-section">
-        <h3>Community</h3>
-        <a href="#">Discord</a>
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-      </div>
-
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
-        <a href="#">Accessibility</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div>&copy; 2026 NEURAL HUB. All rights reserved.</div>
-      <div>Built with 🧠 + ✨</div>
     </div>
   </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    // ─── Animated hero title (React element per spec) ───────────────────────
+    const glowSpan = React.createElement('span', {
+      key: 'glow',
+      style: {
+        color: '#00d9ff',
+        display: 'inline-block',
+        animation: 'glow-pulse 3s ease infinite',
+      }
+    }, 'INTELLIGENCE');
+
+    const heroTitle = React.createElement('h1', {
+      key: 'hero-h1',
+      style: {
+        fontFamily: "'Orbitron', sans-serif",
+        fontWeight: 900,
+        fontSize: 'clamp(40px, 6.5vw, 88px)',
+        lineHeight: 1.04,
+        letterSpacing: '-0.01em',
+        marginBottom: '28px',
+        color: '#ffffff',
+      }
+    },
+      'LEARN THE\u00A0',
+      React.createElement('br', { key: 'br1' }),
+      glowSpan,
+      React.createElement('br', { key: 'br2' }),
+      'STACK'
+    );
+
+    // ─── Scanline effect (React element per spec) ───────────────────────────
+    const scanline = React.createElement('div', {
+      key: 'scanline',
+      style: {
+        position: 'fixed',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: '3px',
+        background: 'linear-gradient(90deg, transparent, rgba(0,217,255,0.12) 30%, rgba(0,217,255,0.18) 50%, rgba(0,217,255,0.12) 70%, transparent)',
+        animation: 'scan-line 10s linear infinite',
+        pointerEvents: 'none',
+        zIndex: 200,
+      }
+    });
+
+    // ─── Course card factory ────────────────────────────────────────────────
+    //  To add a new course: call makeCourse() with the properties below.
+    //  accent = CSS hex color string; r,g,b = the decimal RGB values of that hex.
+    const makeCourse = ({ id, title, description, duration, tag, link, accent, r, g, b }) => {
+      const dim   = `rgba(${r},${g},${b},0.13)`;
+      const mid   = `rgba(${r},${g},${b},0.28)`;
+      const isLive = tag === 'LIVE NOW';
+
+      return {
+        id, title, description, duration, tag, link, accent,
+        cardBase: {
+          background: '#0d1130',
+          padding: '40px',
+          position: 'relative',
+          overflow: 'hidden',
+          transition: 'all 0.32s ease',
+          border: '1px solid rgba(255,255,255,0.04)',
+        },
+        cardHover: {
+          background: '#101438',
+          boxShadow: `0 0 60px ${dim}, 0 4px 40px rgba(0,0,0,0.3)`,
+        },
+        cornerV: {
+          position: 'absolute', top: 0, left: 0,
+          width: '3px', height: '64px',
+          background: accent,
+          animation: 'corner-flicker 6s ease infinite',
+        },
+        cornerH: {
+          position: 'absolute', top: 0, left: 0,
+          width: '64px', height: '3px',
+          background: accent,
+          animation: 'corner-flicker 6s ease infinite',
+        },
+        glow: {
+          position: 'absolute',
+          bottom: '-60px', right: '-60px',
+          width: '280px', height: '280px',
+          borderRadius: '50%',
+          background: `radial-gradient(circle, ${dim}, transparent 70%)`,
+          pointerEvents: 'none',
+        },
+        tagStyle: {
+          fontSize: '10px',
+          letterSpacing: '0.18em',
+          padding: '4px 11px',
+          fontFamily: "'Space Mono', monospace",
+          border: `1px solid ${accent}`,
+          color: accent,
+          whiteSpace: 'nowrap',
+          background: isLive ? dim : 'transparent',
+          animation: isLive ? 'live-pulse 2.5s ease infinite' : 'none',
+          flexShrink: 0,
+        },
+        dot: {
+          width: '5px', height: '5px',
+          background: accent,
+          flexShrink: 0,
+        },
+        btn: {
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '10px',
+          border: `1px solid ${accent}`,
+          color: accent,
+          padding: '11px 28px',
+          fontFamily: "'Space Mono', monospace",
+          fontSize: '12px',
+          letterSpacing: '0.12em',
+          background: 'transparent',
+          transition: 'all 0.22s ease',
+        },
+        btnHover: {
+          background: accent,
+          color: '#0a0e27',
+          boxShadow: `0 0 30px ${mid}`,
+        },
+      };
+    };
+
+    // ─── Course data ─────────────────────────────────────────────────────────
+    const courses = [
+      makeCourse({
+        id: '01',
+        title: 'LLM Intelligence & Agent Autonomy',
+        description: 'From "next-word guesser" to understanding genuine AI intelligence. 34 deep-dive topics across 7 modules — transformers, reasoning chains, emergent behavior, and beyond.',
+        duration: '20–30 hrs',
+        tag: 'LIVE NOW',
+        link: 'https://llm-intelligence-course.vercel.app',
+        accent: '#00d9ff', r: 0,   g: 217, b: 255,
+      }),
+      makeCourse({
+        id: '02',
+        title: 'Agents Master Course',
+        description: 'Complete curriculum on building autonomous agents. System design, memory architecture, multi-step reasoning, tool use, and multi-agent orchestration.',
+        duration: 'TBD',
+        tag: 'COMING SOON',
+        link: 'https://agents-master-course.vercel.app',
+        accent: '#d946ef', r: 217, g: 70,  b: 239,
+      }),
+      makeCourse({
+        id: '03',
+        title: 'Book-to-HTML',
+        description: 'Interactive readers built from great books. Atomic Habits, 48 Laws of Power, Co-Intelligence — structured for deep, active learning rather than passive reading.',
+        duration: 'Self-paced',
+        tag: 'COMING SOON',
+        link: 'https://book-to-html.vercel.app',
+        accent: '#00ff41', r: 0,   g: 255, b: 65,
+      }),
+      makeCourse({
+        id: '04',
+        title: 'AI-first App Dev Blueprint',
+        description: 'Architecture playbook for building AI-native applications. Patterns, system design, evaluation frameworks, and best practices for the AI era.',
+        duration: 'TBD',
+        tag: 'COMING SOON',
+        link: 'https://ai-first-blueprint.vercel.app',
+        accent: '#ffb800', r: 255, g: 184, b: 0,
+      }),
+      makeCourse({
+        id: '05',
+        title: 'Claude Certified Architect Prep',
+        description: 'Full CCA-F exam prep: interactive Claude 101 + Subagents courses, 9 extension deep-dives across all 5 exam domains, MCQ practice, and a domain-mapped exam digest.',
+        duration: 'Self-paced · 2 courses · 9 extensions',
+        tag: 'NEW',
+        link: 'https://claude-certified-architect-prep-two.vercel.app',
+        accent: '#c084fc', r: 192, g: 132, b: 252,
+      }),
+    ];
+
+    return { heroTitle, scanline, courses };
+  }
+}
+</script>
 </body>
 </html>
