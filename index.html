@@ -280,6 +280,16 @@
       color: #4b5563;
     }
 
+    .status-featured {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-new {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
     .course-title {
       font-size: 18px;
       font-weight: 600;
@@ -304,49 +314,60 @@
       align-self: flex-start;
     }
 
+    .free-signal {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #15803d;
+      background: #dcfce7;
+      border: 1px solid #bbf7d0;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: var(--spacing-xl);
+    }
+
     /* ═══════════════════════════════════════════════════════════════════════
        FOOTER
        ═══════════════════════════════════════════════════════════════════════ */
     footer {
       background: var(--text-primary);
       color: white;
-      padding: var(--spacing-3xl) var(--spacing-lg);
+      padding: var(--spacing-2xl) var(--spacing-lg);
       margin-top: var(--spacing-4xl);
     }
 
-    .footer-inner {
+    .footer-nav {
       max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-2xl);
-      margin-bottom: var(--spacing-2xl);
+      margin: 0 auto var(--spacing-xl);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm) var(--spacing-xl);
+      align-items: center;
     }
 
-    .footer-section h3 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: var(--spacing-md);
+    .footer-nav-label {
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      opacity: 0.8;
+      opacity: 0.45;
     }
 
-    .footer-section a {
-      display: block;
-      color: rgba(255, 255, 255, 0.7);
+    .footer-nav a {
+      color: rgba(255, 255, 255, 0.65);
       text-decoration: none;
       font-size: 14px;
-      margin-bottom: var(--spacing-sm);
       transition: color 0.2s;
     }
 
-    .footer-section a:hover {
-      color: white;
+    .footer-nav a:hover {
       color: var(--accent-warm);
     }
 
     .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: var(--spacing-lg);
       display: flex;
@@ -402,7 +423,6 @@
       <a href="#" class="logo">NEURAL <span>HUB</span></a>
       <nav>
         <a href="#courses">Courses</a>
-        <a href="#about">About</a>
       </nav>
     </div>
   </header>
@@ -410,10 +430,10 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <h1>Build Real AI Understanding</h1>
-    <p>From neural network fundamentals to autonomous agents. Seven modules. 34 core concepts. 5,200+ learners. Self-paced.</p>
+    <p>From neural network fundamentals to autonomous agents. Seven modules. 34 core concepts. Self-paced.</p>
+    <p class="free-signal">Free · No signup required · Start now</p>
     <div class="hero-ctas">
-      <button class="btn btn-primary">Explore Courses</button>
-      <button class="btn btn-secondary">Learn More</button>
+      <a href="#courses" class="btn btn-primary">Explore Courses</a>
     </div>
   </section>
 
@@ -427,7 +447,7 @@
       <div class="course-card">
         <div class="course-icon">🧠</div>
         <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
+          <span class="course-status status-featured">START HERE</span>
           <h3 class="course-title">LLM Intelligence & Agent Autonomy</h3>
           <p class="course-description">From "next-word guesser" to genuine artificial intelligence. A 34-gap curriculum across 7 modules, taking you from foundational theory to autonomous action.</p>
           <div class="course-duration">7 modules • 34 topics • Self-paced</div>
@@ -439,7 +459,7 @@
       <div class="course-card">
         <div class="course-icon">🤖</div>
         <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
+          <span class="course-status status-live">LIVE</span>
           <h3 class="course-title">Agents Master Course</h3>
           <p class="course-description">Build and deploy intelligent agents from first principles. Learn agent architecture, tool integration, memory systems, and multi-agent coordination.</p>
           <div class="course-duration">6 modules • 42 topics • Self-paced</div>
@@ -451,7 +471,7 @@
       <div class="course-card">
         <div class="course-icon">📖</div>
         <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
+          <span class="course-status status-live">LIVE</span>
           <h3 class="course-title">Book-to-HTML Learning</h3>
           <p class="course-description">Interactive book readers and flashcard study systems. Deep-dive into classic business and self-improvement books with study materials and reading guides.</p>
           <div class="course-duration">4 books • Interactive • Self-paced</div>
@@ -463,7 +483,7 @@
       <div class="course-card">
         <div class="course-icon">🏗️</div>
         <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
+          <span class="course-status status-live">LIVE</span>
           <h3 class="course-title">AI-First Application Development Blueprint</h3>
           <p class="course-description">Build production-grade AI-native applications. From system design to deployment, learn how to architect applications around LLM capabilities.</p>
           <div class="course-duration">5 modules • 38 patterns • Self-paced</div>
@@ -475,7 +495,7 @@
       <div class="course-card">
         <div class="course-icon">🎯</div>
         <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
+          <span class="course-status status-new">NEW</span>
           <h3 class="course-title">Claude Certified Architect Prep</h3>
           <p class="course-description">Full CCA-F exam prep: interactive Claude 101 + Subagents courses, 9 extension deep-dives across all 5 exam domains, MCQ practice, and a domain-mapped exam digest.</p>
           <div class="course-duration">2 courses • 9 extensions • Self-paced</div>
@@ -487,7 +507,7 @@
       <div class="course-card">
         <div class="course-icon">📄</div>
         <div class="course-content">
-          <span class="course-status status-live">LIVE NOW</span>
+          <span class="course-status status-new">NEW</span>
           <h3 class="course-title">Topic Briefer — Deep Dive AI Briefs</h3>
           <p class="course-description">Standalone deep-dive explainers on Claude SDK 101, building agents in Claude Code, PyCharm setup for agents, ontology & knowledge graphs, and LLM intelligence foundations.</p>
           <div class="course-duration">5 briefs • 30–60 min each • Self-paced</div>
@@ -499,40 +519,14 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-section">
-        <h3>Courses</h3>
-        <a href="https://llm-intelligence-course.vercel.app">LLM Intelligence</a>
-        <a href="https://agents-master-course.vercel.app">Agents Master</a>
-        <a href="https://book-to-html.vercel.app">Book-to-HTML</a>
-        <a href="https://ai-first-blueprint.vercel.app">AI-first Blueprint</a>
-        <a href="https://claude-certified-architect-prep-two.vercel.app">Claude Certified Architect</a>
-        <a href="https://topic-briefer.vercel.app">Topic Briefer</a>
-      </div>
-
-      <div class="footer-section">
-        <h3>Resources</h3>
-        <a href="#">Documentation</a>
-        <a href="#">FAQ</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-      </div>
-
-      <div class="footer-section">
-        <h3>Community</h3>
-        <a href="#">Discord</a>
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-      </div>
-
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
-        <a href="#">Accessibility</a>
-      </div>
+    <div class="footer-nav">
+      <span class="footer-nav-label">Courses</span>
+      <a href="https://llm-intelligence-course.vercel.app">LLM Intelligence</a>
+      <a href="https://agents-master-course.vercel.app">Agents Master</a>
+      <a href="https://book-to-html.vercel.app">Book-to-HTML</a>
+      <a href="https://ai-first-blueprint.vercel.app">AI-first Blueprint</a>
+      <a href="https://claude-certified-architect-prep-two.vercel.app">Claude Certified Architect</a>
+      <a href="https://topic-briefer.vercel.app">Topic Briefer</a>
     </div>
 
     <div class="footer-bottom">
