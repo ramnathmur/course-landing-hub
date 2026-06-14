@@ -21,6 +21,9 @@
 | **Landing Hub** | https://course-landing-hub.vercel.app |
 | GitHub Repo | https://github.com/ramnathmur/course-landing-hub |
 | Local Project | `C:\Claude Cowork\Projects\course-landing-hub\` |
+| **Topic Briefer collection** | https://topic-briefer.vercel.app |
+| Topic Briefer GitHub | https://github.com/ramnathmur/topic-briefer |
+| Topic Briefer Local | `C:\Claude Cowork\Projects\topic-briefer\` |
 
 ### Design Identity — LOCKED
 This site uses a **minimalist light-mode design**. Never replace it with a cyberpunk, dark, or Claude Design dc.html theme.
@@ -43,13 +46,22 @@ Card style: white bg, `1px solid var(--border)`, 8px radius, lift on hover
 
 ### Course Inventory (as of 2026-06-14)
 
-| # | Icon | Title | Status | URL |
-|---|------|-------|--------|-----|
-| 1 | 🧠 | LLM Intelligence & Agent Autonomy | LIVE NOW | https://llm-intelligence-course.vercel.app |
-| 2 | 🤖 | Agents Master Course | LIVE NOW | https://agents-master-course.vercel.app |
-| 3 | 📖 | Book-to-HTML Learning | LIVE NOW | https://book-to-html.vercel.app |
-| 4 | 🏗️ | AI-First Application Development Blueprint | LIVE NOW | https://ai-first-blueprint.vercel.app |
-| 5 | 🎯 | Claude Certified Architect Prep | LIVE NOW | https://claude-certified-architect-prep-two.vercel.app |
+Badges are now **differentiated** — do not default all cards to "LIVE NOW":
+
+| # | Icon | Title | Badge | CSS Class | URL |
+|---|------|-------|-------|-----------|-----|
+| 1 | 🧠 | LLM Intelligence & Agent Autonomy | START HERE | `status-featured` | https://llm-intelligence-course.vercel.app |
+| 2 | 🤖 | Agents Master Course | LIVE | `status-live` | https://agents-master-course.vercel.app |
+| 3 | 📖 | Book-to-HTML Learning | LIVE | `status-live` | https://book-to-html.vercel.app |
+| 4 | 🏗️ | AI-First Application Development Blueprint | LIVE | `status-live` | https://ai-first-blueprint.vercel.app |
+| 5 | 🎯 | Claude Certified Architect Prep | NEW | `status-new` | https://claude-certified-architect-prep-two.vercel.app |
+| 6 | 📄 | Topic Briefer — Deep Dive AI Briefs | NEW | `status-new` | https://topic-briefer.vercel.app |
+
+**Badge CSS classes available:**
+- `status-featured` (amber — `#fef3c7` / `#92400e`) → use for the flagship / recommended-first course
+- `status-live` (green — `#dcfce7` / `#15803d`) → established courses
+- `status-new` (blue — `#dbeafe` / `#1e40af`) → recently added
+- `status-coming` (grey — `#f3f4f6` / `#4b5563`) → not yet deployed
 
 ---
 
@@ -60,8 +72,9 @@ These mistakes have happened before. Do not repeat them.
 1. **Never copy `AI Course Hub.dc.html` or `AI Course Hub - Standalone.html` over `index.html`** — that overwrites the minimalist design with a cyberpunk theme.
 2. **Never use `routes` in `vercel.json`** — the catch-all pattern `{"src": "/.*", "dest": "/index.html"}` breaks sub-file serving (support.js, CSS, etc. get redirected to index.html). Always use `rewrites`.
 3. **Never edit `index.html` without first reading the live site** — see the QA Protocol in Section 5.
-4. **Never hardcode `status-coming` for a newly added live course** — use `status-live` with text "LIVE NOW".
+4. **Never default all badges to "LIVE NOW"** — use the badge system in the Course Inventory table (Section 1). New courses get `status-new NEW`; the flagship stays `status-featured START HERE`; established ones use `status-live LIVE`.
 5. **Never deploy without running `vercel --prod`** — staging URLs (`.vercel.app` with project hash) return 401.
+6. **Never use `vercel project rm` while background deploys are running** — removing the project kills in-flight deployments and causes "Deployment not found" errors. Always wait for or cancel active deploys first.
 
 ---
 
@@ -107,7 +120,7 @@ Add after the last `</div>` closing the previous course card, before the closing
 <div class="course-card">
   <div class="course-icon">[EMOJI]</div>
   <div class="course-content">
-    <span class="course-status status-live">LIVE NOW</span>
+    <span class="course-status status-new">NEW</span>
     <h3 class="course-title">[Full Course Title]</h3>
     <p class="course-description">[2–3 sentence description of what the course covers and who it's for.]</p>
     <div class="course-duration">[N modules • N topics • Self-paced]</div>
@@ -116,13 +129,18 @@ Add after the last `</div>` closing the previous course card, before the closing
 </div>
 ```
 
-Use `status-coming` (grey badge) instead of `status-live` (green badge) if the course is not yet deployed.
+Choose the badge that fits (see badge table in Section 1):
+- Brand-new course → `status-new` / `NEW`
+- Established course → `status-live` / `LIVE`
+- Not yet deployed → `status-coming` / `COMING SOON`
+- Promoted to flagship → `status-featured` / `START HERE` (only one card at a time)
 
 ### Step 4 — Add footer link
-In the `<div class="footer-section">` block under `<h3>Courses</h3>`, add:
+The footer is now a single horizontal nav row (no more column sections). Find `<div class="footer-nav">` and add one `<a>` before the closing `</div>`:
 ```html
 <a href="[VERCEL_URL]">[Short Course Name]</a>
 ```
+The label stays in the same inline row with the other course links — no `<h3>` or section wrapper needed.
 
 ### Step 5 — Verify locally (optional but recommended)
 Open `index.html` in a browser and confirm the card appears correctly.
@@ -171,8 +189,8 @@ For visual QA, use headless Chrome (if Chrome is available):
 - [ ] All N courses appear (count matches)
 - [ ] New course card shows correct title, description, duration
 - [ ] CTA button links to the correct Vercel URL
-- [ ] Status badge is correct (`LIVE NOW` vs `COMING SOON`)
-- [ ] Footer COURSES column includes the new link
+- [ ] Status badge matches the badge table in Section 1 (START HERE / LIVE / NEW / COMING SOON)
+- [ ] Footer nav row includes the new course link
 - [ ] No orphaned or truncated text visible
 - [ ] Design unchanged (light mode, amber buttons, white cards)
 
@@ -231,7 +249,7 @@ git push
 vercel --prod --yes
 ```
 
-The last validated minimalist commit was `5a4ab9e` (as of 2026-06-14).
+The last validated minimalist commit was `5502e73` (UX audit pass — 2026-06-14).
 
 ---
 
@@ -279,8 +297,38 @@ Vercel Project: `course-landing-hub` (under ramnathmur account)
 
 These are not yet implemented — flag them if relevant:
 
-- **Hero CTA wiring** — "Explore Courses" button scrolls to `#courses` but is a `<button>` not an `<a>` — add `onclick="document.getElementById('courses').scrollIntoView()"` or convert to anchor.
-- **Footer placeholder links** — Documentation, FAQ, Blog, Contact, Discord, Twitter, LinkedIn, GitHub, Privacy Policy, Terms, Cookie Policy, Accessibility all link to `#`. Wire when real URLs exist.
-- **Course count in hero** — Hero says "5,200+ learners" (hardcoded). Consider making it dynamic or updating when significant milestones pass.
 - **Custom domain** — `neural-hub.com` or similar for a branded URL instead of `.vercel.app`.
 - **`og:image` meta tags** — Social sharing previews are missing. Add Open Graph tags to `<head>` for better link previews.
+- **Instructor identity section** — A short "who built this" block would help trust; skipped for now pending content.
+
+**Completed in prior sessions (do not re-implement):**
+- ~~Hero CTA wiring~~ — Converted `<button>` to `<a href="#courses">`, removed unused "Learn More" button.
+- ~~Footer placeholder links~~ — All dead `#` links removed; footer stripped to courses row + copyright only.
+- ~~Course count in hero~~ — "5,200+ learners" removed from hero paragraph.
+- ~~Badge differentiation~~ — All badges now use the 4-tier system (see Section 1), replacing the old blanket "LIVE NOW".
+
+## 11. TOPIC BRIEFER SITE — SEPARATE VERCEL PROJECT
+
+The Topic Briefer is a standalone multi-file collection site, separate from the landing hub.
+
+| Field | Value |
+|-------|-------|
+| Live URL | https://topic-briefer.vercel.app |
+| GitHub | https://github.com/ramnathmur/topic-briefer |
+| Local | `C:\Claude Cowork\Projects\topic-briefer\` |
+
+**File inventory:**
+- `index.html` — dark-theme index listing all 14 briefs in two sections
+- 5 briefs from `C:\Claude Cowork\CLAUDE OUTPUTS\Topic Briefer\`
+- 9 briefs from `C:\Claude Cowork\Projects\topic-explainer\output\` (Topic Explainer v1.2 series)
+
+**To add a new brief:** copy the HTML file into `C:\Claude Cowork\Projects\topic-briefer\`, add a card to `index.html`, then:
+```powershell
+cd "C:\Claude Cowork\Projects\topic-briefer"
+git add .
+git commit -m "Add [brief title]"
+git push
+vercel --prod --yes
+```
+
+**Known issue:** If `vercel --prod --yes` hangs at "Building…" with UNKNOWN status, the project may have a stale GitHub link. Fix: delete the project (`echo "y" | vercel project rm topic-briefer`), remove the `.vercel` folder, then redeploy fresh.
