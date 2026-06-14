@@ -74,7 +74,8 @@ These mistakes have happened before. Do not repeat them.
 3. **Never edit `index.html` without first reading the live site** — see the QA Protocol in Section 5.
 4. **Never default all badges to "LIVE NOW"** — use the badge system in the Course Inventory table (Section 1). New courses get `status-new NEW`; the flagship stays `status-featured START HERE`; established ones use `status-live LIVE`.
 5. **Never deploy without running `vercel --prod`** — staging URLs (`.vercel.app` with project hash) return 401.
-6. **Never use `vercel project rm` while background deploys are running** — removing the project kills in-flight deployments and causes "Deployment not found" errors. Always wait for or cancel active deploys first.
+6. **Never skip the dedup check** — always run `Test-Path` (topic-briefer) or `Select-String` (landing hub) before adding a file or card. See Section 4 Step 0 and Section 11 for the one-liners.
+7. **Never use `vercel project rm` while background deploys are running** — removing the project kills in-flight deployments and causes "Deployment not found" errors. Always wait for or cancel active deploys first.
 
 ---
 
@@ -98,6 +99,21 @@ All projects in this ecosystem use this exact config. Copy it verbatim — do no
 ---
 
 ## 4. ADD A NEW COURSE CARD
+
+### Step 0 — Deduplication check (run first)
+Before touching `index.html`, confirm the course URL is not already linked:
+
+```powershell
+$url  = "https://NEW-COURSE-URL.vercel.app"   # ← set this
+$file = "C:\Claude Cowork\Projects\course-landing-hub\index.html"
+if (Select-String -Path $file -Pattern ([regex]::Escape($url)) -Quiet) {
+    Write-Warning "DUPLICATE: $url already appears in index.html — abort."
+} else {
+    Write-Host "OK: URL not found — safe to add card."
+}
+```
+
+If the check returns a warning, **stop**. The course is already on the hub. Verify the existing card is correct and re-deploy only if content changed.
 
 ### Step 1 — Read the live site first
 Before touching `index.html`, verify current state:
@@ -322,8 +338,25 @@ The Topic Briefer is a standalone multi-file collection site, separate from the 
 - 5 briefs from `C:\Claude Cowork\CLAUDE OUTPUTS\Topic Briefer\`
 - 9 briefs from `C:\Claude Cowork\Projects\topic-explainer\output\` (Topic Explainer v1.2 series)
 
-**To add a new brief:** copy the HTML file into `C:\Claude Cowork\Projects\topic-briefer\`, add a card to `index.html`, then:
+**To add a new brief — deduplication check first:**
+
 ```powershell
+# Step 1 — Check before copying (run for every new file)
+$src  = "C:\Claude Cowork\CLAUDE OUTPUTS\Topic Briefer\new-brief.html"  # ← set this
+$dest = "C:\Claude Cowork\Projects\topic-briefer"
+$name = Split-Path $src -Leaf
+if (Test-Path "$dest\$name") {
+    Write-Warning "DUPLICATE: '$name' already exists in topic-briefer — skipping."
+} else {
+    Copy-Item $src $dest
+    Write-Host "OK: '$name' copied — proceed to update index.html."
+}
+```
+
+If the check returns a warning, the file is already deployed. Do not re-copy. If content genuinely changed, use `Copy-Item $src $dest -Force` deliberately.
+
+```powershell
+# Step 2 — Commit and deploy (only after check passes)
 cd "C:\Claude Cowork\Projects\topic-briefer"
 git add .
 git commit -m "Add [brief title]"
