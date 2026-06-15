@@ -56,6 +56,7 @@ Badges are now **differentiated** — do not default all cards to "LIVE NOW":
 | 4 | 🏗️ | AI-First Application Development Blueprint | LIVE | `status-live` | https://ai-first-blueprint.vercel.app |
 | 5 | 🎯 | Claude Certified Architect Prep | NEW | `status-new` | https://claude-certified-architect-prep-two.vercel.app |
 | 6 | 📄 | Topic Briefer — Deep Dive AI Briefs | NEW | `status-new` | https://topic-briefer.vercel.app |
+| 7 | 🧩 | Assorted AI Learning | NEW | `status-new` | https://assorted-ai-learning.vercel.app |
 
 **Badge CSS classes available:**
 - `status-featured` (amber — `#fef3c7` / `#92400e`) → use for the flagship / recommended-first course
@@ -365,3 +366,28 @@ vercel --prod --yes
 ```
 
 **Known issue:** If `vercel --prod --yes` hangs at "Building…" with UNKNOWN status, the project may have a stale GitHub link. Fix: delete the project (`echo "y" | vercel project rm topic-briefer`), remove the `.vercel` folder, then redeploy fresh.
+
+## 12. ASSORTED AI LEARNING — SEPARATE VERCEL PROJECT
+
+A growing collection of standalone HTML learning pieces. No prerequisite chain — files can be read in any order.
+
+| Field | Value |
+|-------|-------|
+| Live URL | https://assorted-ai-learning.vercel.app |
+| GitHub | https://github.com/ramnathmur/assorted-ai-learning |
+| Local | `C:\Claude Cowork\Projects\assorted-ai-learning\` |
+
+**To add a new file:**
+1. Copy the HTML file into `C:\Claude Cowork\Projects\assorted-ai-learning\`
+2. Add an entry to the `FILES` array in `index.html`:
+   ```javascript
+   { href: 'filename.html', title: 'Display Title', desc: 'One-line description' },
+   ```
+3. Commit and deploy:
+   ```powershell
+   cd "C:\Claude Cowork\Projects\assorted-ai-learning"
+   git add .
+   git commit -m "Add [title]"
+   git push
+   vercel --prod --yes
+   ```
