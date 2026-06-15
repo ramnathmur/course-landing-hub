@@ -88,50 +88,6 @@
     nav a:hover { color: var(--accent-warm); }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       HERO
-       ═══════════════════════════════════════════════════════════════════════ */
-    .hero {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: var(--spacing-3xl) var(--spacing-lg);
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: var(--spacing-md);
-      color: var(--text-primary);
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-lg);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: var(--spacing-md);
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .free-signal {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: #15803d;
-      background: #dcfce7;
-      border: 1px solid #bbf7d0;
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: var(--spacing-xl);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
        BUTTONS
        ═══════════════════════════════════════════════════════════════════════ */
     .btn {
@@ -167,18 +123,67 @@
     .section {
       max-width: 1280px;
       margin: 0 auto;
-      padding: var(--spacing-4xl) var(--spacing-lg);
+      padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-4xl);
+    }
+    .section-header {
+      margin-bottom: var(--spacing-2xl);
     }
     .section-title {
       font-size: 24px;
       font-weight: 600;
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-xs);
       color: var(--text-primary);
     }
     .section-description {
       font-size: 15px;
       color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       SELF-ROUTING GUIDE
+       ═══════════════════════════════════════════════════════════════════════ */
+    .route-guide {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xl);
+      flex-wrap: wrap;
+      padding: 12px var(--spacing-lg);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
       margin-bottom: var(--spacing-2xl);
+    }
+    .route-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .route-paths {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px var(--spacing-lg);
+      align-items: center;
+    }
+    .route-path {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .route-path a {
+      color: var(--text-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--accent-warm);
+      padding-bottom: 1px;
+    }
+    .route-path a:hover { color: var(--accent-warm); }
+    .route-sep {
+      color: var(--border);
+      font-size: 16px;
+      line-height: 1;
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
@@ -229,7 +234,7 @@
       text-transform: uppercase;
       letter-spacing: 0.07em;
       color: var(--text-muted);
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-xs);
     }
     .course-title-featured {
       font-size: 20px;
@@ -243,13 +248,35 @@
       color: var(--text-secondary);
       line-height: 1.75;
       margin-bottom: var(--spacing-md);
-      flex: 1;
+    }
+    /* Outcome statement: what you can DO after */
+    .course-outcome {
+      font-size: 13px;
+      color: var(--accent-teal);
+      font-style: italic;
+      line-height: 1.5;
+      padding-left: 12px;
+      border-left: 2px solid var(--accent-teal);
+      margin-bottom: var(--spacing-md);
     }
     .course-meta {
       font-size: 12px;
       color: var(--text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+    /* Pairs-with cross-link */
+    .course-pair {
+      font-size: 12px;
+      color: var(--text-muted);
       margin-bottom: var(--spacing-lg);
     }
+    .course-pair a {
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .course-pair a:hover { color: var(--accent-warm); border-color: var(--accent-warm); }
 
     /* ═══════════════════════════════════════════════════════════════════════
        SECONDARY COURSE CARDS (supporting four)
@@ -306,7 +333,7 @@
       font-size: 13px;
       color: var(--text-secondary);
       line-height: 1.65;
-      margin-bottom: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
       flex: 1;
     }
     .course-meta-secondary {
@@ -371,9 +398,8 @@
       .courses-featured { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .hero h1 { font-size: 32px; }
-      .hero p { font-size: 16px; }
-      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .route-guide { gap: var(--spacing-md); }
+      .route-sep { display: none; }
       .courses-secondary { grid-template-columns: 1fr 1fr; }
       .footer-bottom { flex-direction: column; }
       .footer-mission { text-align: left; max-width: 100%; }
@@ -394,26 +420,31 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Introduction">
-    <h1>Build Real AI Understanding</h1>
-    <p>Most AI learning teaches you to use tools. These courses teach you how the tools actually work.</p>
-    <p class="free-signal">Free · No signup required · Start now</p>
-    <div class="hero-ctas">
-      <a href="#courses" class="btn btn-primary">Explore Courses</a>
-    </div>
-  </section>
-
-  <!-- COURSES SECTION -->
+  <!-- COURSES SECTION — opens immediately, no hero delay -->
   <section class="section" id="courses" aria-label="Course catalogue">
-    <h2 class="section-title">Courses</h2>
-    <p class="section-description">Six courses. Each is independent — start where your work demands it.</p>
+
+    <div class="section-header">
+      <h2 class="section-title">Courses</h2>
+      <p class="section-description">These courses teach you how AI tools actually work — not just how to use them. All free, no signup.</p>
+    </div>
+
+    <!-- Self-routing guide: orient in 2 lines, not a full hero -->
+    <nav class="route-guide" aria-label="Course finder">
+      <span class="route-label">Start here</span>
+      <div class="route-paths">
+        <span class="route-path">New to how LLMs work? → <a href="#card-llm">LLM Intelligence</a></span>
+        <span class="route-sep">|</span>
+        <span class="route-path">Already building agents? → <a href="#card-agents">Agents Master</a></span>
+        <span class="route-sep">|</span>
+        <span class="route-path">Preparing for CCA-F? → <a href="#card-ccaf">CCA-F Prep</a></span>
+      </div>
+    </nav>
 
     <!-- Featured flagship pair -->
     <div class="courses-featured">
 
       <!-- Course 1: LLM Intelligence -->
-      <div class="course-card-featured">
+      <div class="course-card-featured" id="card-llm">
         <div class="featured-accent featured-accent-warm"></div>
         <div class="course-icon-featured" aria-hidden="true">
           <!-- cpu icon — Lucide, 1.5px stroke -->
@@ -424,16 +455,18 @@
           </svg>
         </div>
         <div class="course-content-featured">
-          <div class="course-domain">Foundations</div>
+          <div class="course-domain">Foundational</div>
           <h3 class="course-title-featured">LLM Intelligence &amp; Agent Autonomy</h3>
           <p class="course-description-featured">Most people who use LLMs still think of them as sophisticated autocomplete. This course corrects that. Covering attention mechanisms, in-context learning, chain-of-thought reasoning, RLHF, and agent architecture — seven tightly-scoped modules that take you from tokenization to autonomous action, with enough technical depth to hold up under scrutiny.</p>
-          <div class="course-meta">7 modules · 34 concepts · Self-paced</div>
+          <p class="course-outcome">After this: you can explain why LLMs hallucinate, how attention works, and what makes autonomous action possible — in technical terms that hold up when challenged.</p>
+          <div class="course-meta">7 modules · 34 concepts · ~8–10 hours</div>
+          <div class="course-pair">Pairs well with → <a href="#card-agents">Agents Master Course</a></div>
           <a href="https://llm-intelligence-course.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
         </div>
       </div>
 
       <!-- Course 2: Agents Master -->
-      <div class="course-card-featured">
+      <div class="course-card-featured" id="card-agents">
         <div class="featured-accent featured-accent-teal"></div>
         <div class="course-icon-featured" aria-hidden="true">
           <!-- bot icon — Lucide, 1.5px stroke -->
@@ -444,10 +477,12 @@
           </svg>
         </div>
         <div class="course-content-featured">
-          <div class="course-domain">Architecture</div>
+          <div class="course-domain">Applied</div>
           <h3 class="course-title-featured">Agents Master Course</h3>
           <p class="course-description-featured">Building a demo agent takes an afternoon. Building one that handles failure, maintains coherent memory across sessions, and coordinates reliably with other agents takes a mental model most tutorials skip. This course provides that model — architecture first, implementation second, failure modes throughout.</p>
-          <div class="course-meta">6 modules · 42 concepts · Self-paced</div>
+          <p class="course-outcome">After this: you can design a multi-agent system from scratch, diagnose coordination failures, and build agents that degrade gracefully instead of silently failing.</p>
+          <div class="course-meta">6 modules · 42 concepts · ~10–12 hours</div>
+          <div class="course-pair">Builds on → <a href="#card-llm">LLM Intelligence &amp; Agent Autonomy</a></div>
           <a href="https://agents-master-course.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
         </div>
       </div>
@@ -470,7 +505,7 @@
         </div>
         <h3 class="course-title-secondary">Book-to-HTML Learning</h3>
         <p class="course-description-secondary">Four business classics rendered as interactive reading environments — chapter breakdowns, flashcard sets, and study guides built in. For people who buy books and don't finish them.</p>
-        <div class="course-meta-secondary">4 books · Interactive</div>
+        <div class="course-meta-secondary">4 books · Weekend project</div>
         <a href="https://book-to-html.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
       </div>
 
@@ -487,12 +522,12 @@
         </div>
         <h3 class="course-title-secondary">AI-First Application Development Blueprint</h3>
         <p class="course-description-secondary">Production-grade AI-native architecture: context management, fallback design, evaluation strategy, and the patterns that hold when model behaviour is non-deterministic.</p>
-        <div class="course-meta-secondary">5 modules · 38 patterns</div>
+        <div class="course-meta-secondary">Applied · 5 modules · ~10 hours</div>
         <a href="https://ai-first-blueprint.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
       </div>
 
       <!-- Course 5: CCA-F Prep -->
-      <div class="course-card-secondary">
+      <div class="course-card-secondary" id="card-ccaf">
         <div class="secondary-header" aria-hidden="true">
           <!-- award icon -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -503,7 +538,7 @@
         </div>
         <h3 class="course-title-secondary">Claude Certified Architect Prep (CCA-F)</h3>
         <p class="course-description-secondary">Full preparation across all five CCA-F exam domains — two interactive courses, nine extension modules, MCQ practice, and a domain-mapped exam digest.</p>
-        <div class="course-meta-secondary">2 courses · 9 extensions</div>
+        <div class="course-meta-secondary">Exam-mapped · 2 courses + 9 extensions</div>
         <a href="https://claude-certified-architect-prep-two.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
       </div>
 
@@ -519,7 +554,7 @@
         </div>
         <h3 class="course-title-secondary">Topic Briefer — Deep Dive Explainers</h3>
         <p class="course-description-secondary">Standalone deep-reads on specific AI topics. Not a course — no prerequisite chain. One concept per file, 20–45 minutes each. Start where you need to.</p>
-        <div class="course-meta-secondary">14 briefs · 20–45 min each</div>
+        <div class="course-meta-secondary">Reference · 14 briefs · On demand</div>
         <a href="https://topic-briefer.vercel.app" class="btn btn-primary course-cta">Browse Briefs →</a>
       </div>
 
