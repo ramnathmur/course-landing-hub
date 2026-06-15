@@ -3,31 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEURAL HUB — Educational Intelligence for Practitioners</title>
+  <title>NEURAL HUB — AI Courses for Practitioners</title>
   <style>
     /* ═══════════════════════════════════════════════════════════════════════
-       DESIGN SYSTEM TOKENS
+       DESIGN SYSTEM TOKENS — LOCKED, DO NOT ALTER
        ═══════════════════════════════════════════════════════════════════════ */
     :root {
-      /* Color Palette */
       --bg-primary: #f9fafb;
       --bg-secondary: #f3f4f6;
       --text-primary: #1f2937;
       --text-secondary: #374151;
       --text-muted: #6b7280;
       --border: #e5e7eb;
-
-      /* Accent Colors */
-      --accent-warm: #f59e0b;    /* Amber - primary CTAs */
-      --accent-teal: #14b8a6;    /* Teal - secondary elements */
-      --accent-cyan: #06b6d4;    /* Cyan - tertiary accents */
-
-      /* Shadows */
+      --accent-warm: #f59e0b;
+      --accent-teal: #14b8a6;
+      --accent-cyan: #06b6d4;
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1);
       --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07);
-
-      /* Spacing */
       --spacing-xs: 4px;
       --spacing-sm: 8px;
       --spacing-md: 16px;
@@ -36,25 +29,15 @@
       --spacing-2xl: 48px;
       --spacing-3xl: 64px;
       --spacing-4xl: 80px;
-
-      /* Typography */
       --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       GLOBAL STYLES
+       GLOBAL
        ═══════════════════════════════════════════════════════════════════════ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg-primary);
       color: var(--text-primary);
@@ -66,7 +49,7 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       HEADER / NAVIGATION
+       HEADER
        ═══════════════════════════════════════════════════════════════════════ */
     header {
       position: sticky;
@@ -77,7 +60,6 @@
       z-index: 1000;
       box-shadow: var(--shadow-sm);
     }
-
     .header-inner {
       max-width: 1280px;
       margin: 0 auto;
@@ -87,7 +69,6 @@
       justify-content: space-between;
       height: 64px;
     }
-
     .logo {
       font-size: 20px;
       font-weight: 700;
@@ -95,17 +76,8 @@
       text-decoration: none;
       letter-spacing: -0.5px;
     }
-
-    .logo span {
-      color: var(--accent-warm);
-    }
-
-    nav {
-      display: flex;
-      gap: var(--spacing-lg);
-      align-items: center;
-    }
-
+    .logo span { color: var(--accent-warm); }
+    nav { display: flex; gap: var(--spacing-lg); align-items: center; }
     nav a {
       color: var(--text-secondary);
       text-decoration: none;
@@ -113,13 +85,10 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-
-    nav a:hover {
-      color: var(--accent-warm);
-    }
+    nav a:hover { color: var(--accent-warm); }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       HERO SECTION
+       HERO
        ═══════════════════════════════════════════════════════════════════════ */
     .hero {
       max-width: 1280px;
@@ -127,7 +96,6 @@
       padding: var(--spacing-3xl) var(--spacing-lg);
       text-align: center;
     }
-
     .hero h1 {
       font-size: 48px;
       font-weight: 700;
@@ -135,22 +103,32 @@
       margin-bottom: var(--spacing-md);
       color: var(--text-primary);
     }
-
     .hero p {
       font-size: 18px;
       color: var(--text-secondary);
-      margin-bottom: var(--spacing-2xl);
+      margin-bottom: var(--spacing-lg);
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.7;
     }
-
     .hero-ctas {
       display: flex;
       gap: var(--spacing-md);
       justify-content: center;
       flex-wrap: wrap;
+    }
+    .free-signal {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #15803d;
+      background: #dcfce7;
+      border: 1px solid #bbf7d0;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: var(--spacing-xl);
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
@@ -171,160 +149,170 @@
       font-family: var(--font-family);
       min-height: 44px;
     }
-
     .btn-primary {
       background: var(--accent-warm);
       color: white;
       box-shadow: var(--shadow-md);
     }
-
     .btn-primary:hover {
-      background: #dc2626;
-      transform: translateY(-2px);
+      background: #d97706;
+      transform: translateY(-1px);
       box-shadow: var(--shadow-lg);
     }
-
-    .btn-secondary {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--border);
-    }
+    .course-cta { align-self: flex-start; }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       COURSES SECTION
+       SECTION WRAPPER
        ═══════════════════════════════════════════════════════════════════════ */
     .section {
       max-width: 1280px;
       margin: 0 auto;
       padding: var(--spacing-4xl) var(--spacing-lg);
     }
-
     .section-title {
       font-size: 24px;
-      font-weight: 600;
-      margin-bottom: var(--spacing-lg);
-      color: var(--text-primary);
-    }
-
-    .section-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-2xl);
-    }
-
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--spacing-lg);
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════
-       COURSE CARD
-       ═══════════════════════════════════════════════════════════════════════ */
-    .course-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .course-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-2px);
-    }
-
-    .course-icon {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .course-content {
-      padding: var(--spacing-lg);
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .course-status {
-      display: inline-block;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-radius: 4px;
-      margin-bottom: var(--spacing-md);
-      width: fit-content;
-    }
-
-    .status-live {
-      background: #dcfce7;
-      color: #15803d;
-    }
-
-    .status-coming {
-      background: #f3f4f6;
-      color: #4b5563;
-    }
-
-    .status-featured {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .status-new {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-
-    .course-title {
-      font-size: 18px;
       font-weight: 600;
       margin-bottom: var(--spacing-sm);
       color: var(--text-primary);
     }
-
-    .course-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-lg);
-      flex: 1;
+    .section-description {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-2xl);
     }
 
-    .course-duration {
+    /* ═══════════════════════════════════════════════════════════════════════
+       FEATURED COURSE CARDS (flagship pair)
+       ═══════════════════════════════════════════════════════════════════════ */
+    .courses-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-3xl);
+    }
+    .course-card-featured {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+    .course-card-featured:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .featured-accent { height: 3px; }
+    .featured-accent-warm { background: var(--accent-warm); }
+    .featured-accent-teal { background: var(--accent-teal); }
+    .course-icon-featured {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .course-icon-featured svg { width: 32px; height: 32px; }
+    .course-content-featured {
+      padding: var(--spacing-lg) var(--spacing-xl);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .course-domain {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+    .course-title-featured {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .course-description-featured {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: var(--spacing-md);
+      flex: 1;
+    }
+    .course-meta {
       font-size: 12px;
       color: var(--text-muted);
       margin-bottom: var(--spacing-lg);
     }
 
-    .course-cta {
-      align-self: flex-start;
-    }
-
-    .free-signal {
-      display: inline-block;
-      font-size: 13px;
+    /* ═══════════════════════════════════════════════════════════════════════
+       SECONDARY COURSE CARDS (supporting four)
+       ═══════════════════════════════════════════════════════════════════════ */
+    .courses-secondary-heading {
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      color: #15803d;
-      background: #dcfce7;
-      border: 1px solid #bbf7d0;
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: var(--spacing-xl);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-md);
+    }
+    .courses-secondary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-md);
+    }
+    .course-card-secondary {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+    .course-card-secondary:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+    .secondary-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-muted);
+    }
+    .secondary-header svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .secondary-domain {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .course-title-secondary {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .course-description-secondary {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: var(--spacing-md);
+      flex: 1;
+    }
+    .course-meta-secondary {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-md);
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
@@ -336,7 +324,6 @@
       padding: var(--spacing-2xl) var(--spacing-lg);
       margin-top: var(--spacing-4xl);
     }
-
     .footer-nav {
       max-width: 1280px;
       margin: 0 auto var(--spacing-xl);
@@ -345,7 +332,6 @@
       gap: var(--spacing-sm) var(--spacing-xl);
       align-items: center;
     }
-
     .footer-nav-label {
       font-size: 11px;
       font-weight: 700;
@@ -353,18 +339,13 @@
       letter-spacing: 0.5px;
       opacity: 0.45;
     }
-
     .footer-nav a {
       color: rgba(255, 255, 255, 0.65);
       text-decoration: none;
       font-size: 14px;
       transition: color 0.2s;
     }
-
-    .footer-nav a:hover {
-      color: var(--accent-warm);
-    }
-
+    .footer-nav a:hover { color: var(--accent-warm); }
     .footer-bottom {
       max-width: 1280px;
       margin: 0 auto;
@@ -372,47 +353,33 @@
       padding-top: var(--spacing-lg);
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      gap: var(--spacing-lg);
       font-size: 12px;
       opacity: 0.7;
     }
+    .footer-mission {
+      max-width: 420px;
+      line-height: 1.5;
+      text-align: right;
+    }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       RESPONSIVE DESIGN
+       RESPONSIVE
        ═══════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .courses-featured { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .hero-ctas {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .trust-signals {
-        gap: var(--spacing-lg);
-      }
-
-      nav {
-        display: none;
-      }
-
-      .section {
-        padding: var(--spacing-2xl) var(--spacing-lg);
-      }
-
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .courses-secondary { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; }
+      .footer-mission { text-align: left; max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .courses-secondary { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -421,16 +388,16 @@
   <header>
     <div class="header-inner">
       <a href="#" class="logo">NEURAL <span>HUB</span></a>
-      <nav>
+      <nav aria-label="Main navigation">
         <a href="#courses">Courses</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
     <h1>Build Real AI Understanding</h1>
-    <p>From neural network fundamentals to autonomous agents. Seven modules. 34 core concepts. Self-paced.</p>
+    <p>Most AI learning teaches you to use tools. These courses teach you how the tools actually work.</p>
     <p class="free-signal">Free · No signup required · Start now</p>
     <div class="hero-ctas">
       <a href="#courses" class="btn btn-primary">Explore Courses</a>
@@ -438,82 +405,124 @@
   </section>
 
   <!-- COURSES SECTION -->
-  <section class="section" id="courses">
-    <h2 class="section-title">Available Courses</h2>
-    <p class="section-description">Choose your learning path. All courses are live and accessible today.</p>
+  <section class="section" id="courses" aria-label="Course catalogue">
+    <h2 class="section-title">Courses</h2>
+    <p class="section-description">Six courses. Each is independent — start where your work demands it.</p>
 
-    <div class="courses-grid">
+    <!-- Featured flagship pair -->
+    <div class="courses-featured">
+
       <!-- Course 1: LLM Intelligence -->
-      <div class="course-card">
-        <div class="course-icon">🧠</div>
-        <div class="course-content">
-          <span class="course-status status-featured">START HERE</span>
-          <h3 class="course-title">LLM Intelligence & Agent Autonomy</h3>
-          <p class="course-description">From "next-word guesser" to genuine artificial intelligence. A 34-gap curriculum across 7 modules, taking you from foundational theory to autonomous action.</p>
-          <div class="course-duration">7 modules • 34 topics • Self-paced</div>
+      <div class="course-card-featured">
+        <div class="featured-accent featured-accent-warm"></div>
+        <div class="course-icon-featured" aria-hidden="true">
+          <!-- cpu icon — Lucide, 1.5px stroke -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="6" height="6" rx="1"/>
+            <path d="M15 2v3M9 2v3M2 9h3M2 15h3M15 22v-3M9 22v-3M22 9h-3M22 15h-3"/>
+            <path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/>
+          </svg>
+        </div>
+        <div class="course-content-featured">
+          <div class="course-domain">Foundations</div>
+          <h3 class="course-title-featured">LLM Intelligence &amp; Agent Autonomy</h3>
+          <p class="course-description-featured">Most people who use LLMs still think of them as sophisticated autocomplete. This course corrects that. Covering attention mechanisms, in-context learning, chain-of-thought reasoning, RLHF, and agent architecture — seven tightly-scoped modules that take you from tokenization to autonomous action, with enough technical depth to hold up under scrutiny.</p>
+          <div class="course-meta">7 modules · 34 concepts · Self-paced</div>
           <a href="https://llm-intelligence-course.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
         </div>
       </div>
 
       <!-- Course 2: Agents Master -->
-      <div class="course-card">
-        <div class="course-icon">🤖</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE</span>
-          <h3 class="course-title">Agents Master Course</h3>
-          <p class="course-description">Build and deploy intelligent agents from first principles. Learn agent architecture, tool integration, memory systems, and multi-agent coordination.</p>
-          <div class="course-duration">6 modules • 42 topics • Self-paced</div>
+      <div class="course-card-featured">
+        <div class="featured-accent featured-accent-teal"></div>
+        <div class="course-icon-featured" aria-hidden="true">
+          <!-- bot icon — Lucide, 1.5px stroke -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 8V4H8"/>
+            <rect width="16" height="12" x="4" y="8" rx="2"/>
+            <path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>
+          </svg>
+        </div>
+        <div class="course-content-featured">
+          <div class="course-domain">Architecture</div>
+          <h3 class="course-title-featured">Agents Master Course</h3>
+          <p class="course-description-featured">Building a demo agent takes an afternoon. Building one that handles failure, maintains coherent memory across sessions, and coordinates reliably with other agents takes a mental model most tutorials skip. This course provides that model — architecture first, implementation second, failure modes throughout.</p>
+          <div class="course-meta">6 modules · 42 concepts · Self-paced</div>
           <a href="https://agents-master-course.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
         </div>
       </div>
 
+    </div>
+
+    <!-- Secondary supporting courses -->
+    <div class="courses-secondary-heading" aria-label="Additional courses">More from Neural Hub</div>
+    <div class="courses-secondary">
+
       <!-- Course 3: Book-to-HTML -->
-      <div class="course-card">
-        <div class="course-icon">📖</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE</span>
-          <h3 class="course-title">Book-to-HTML Learning</h3>
-          <p class="course-description">Interactive book readers and flashcard study systems. Deep-dive into classic business and self-improvement books with study materials and reading guides.</p>
-          <div class="course-duration">4 books • Interactive • Self-paced</div>
-          <a href="https://book-to-html.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
+      <div class="course-card-secondary">
+        <div class="secondary-header" aria-hidden="true">
+          <!-- book-open icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+          <span class="secondary-domain">Learning</span>
         </div>
+        <h3 class="course-title-secondary">Book-to-HTML Learning</h3>
+        <p class="course-description-secondary">Four business classics rendered as interactive reading environments — chapter breakdowns, flashcard sets, and study guides built in. For people who buy books and don't finish them.</p>
+        <div class="course-meta-secondary">4 books · Interactive</div>
+        <a href="https://book-to-html.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
       </div>
 
-      <!-- Course 4: AI-first Blueprint -->
-      <div class="course-card">
-        <div class="course-icon">🏗️</div>
-        <div class="course-content">
-          <span class="course-status status-live">LIVE</span>
-          <h3 class="course-title">AI-First Application Development Blueprint</h3>
-          <p class="course-description">Build production-grade AI-native applications. From system design to deployment, learn how to architect applications around LLM capabilities.</p>
-          <div class="course-duration">5 modules • 38 patterns • Self-paced</div>
-          <a href="https://ai-first-blueprint.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
+      <!-- Course 4: AI-First Blueprint -->
+      <div class="course-card-secondary">
+        <div class="secondary-header" aria-hidden="true">
+          <!-- layout-template icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="7" x="3" y="3" rx="1"/>
+            <rect width="9" height="7" x="3" y="14" rx="1"/>
+            <rect width="5" height="7" x="16" y="14" rx="1"/>
+          </svg>
+          <span class="secondary-domain">Engineering</span>
         </div>
+        <h3 class="course-title-secondary">AI-First Application Development Blueprint</h3>
+        <p class="course-description-secondary">Production-grade AI-native architecture: context management, fallback design, evaluation strategy, and the patterns that hold when model behaviour is non-deterministic.</p>
+        <div class="course-meta-secondary">5 modules · 38 patterns</div>
+        <a href="https://ai-first-blueprint.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
       </div>
 
-      <!-- Course 5: Claude Certified Architect Prep -->
-      <div class="course-card">
-        <div class="course-icon">🎯</div>
-        <div class="course-content">
-          <span class="course-status status-new">NEW</span>
-          <h3 class="course-title">Claude Certified Architect Prep</h3>
-          <p class="course-description">Full CCA-F exam prep: interactive Claude 101 + Subagents courses, 9 extension deep-dives across all 5 exam domains, MCQ practice, and a domain-mapped exam digest.</p>
-          <div class="course-duration">2 courses • 9 extensions • Self-paced</div>
-          <a href="https://claude-certified-architect-prep-two.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
+      <!-- Course 5: CCA-F Prep -->
+      <div class="course-card-secondary">
+        <div class="secondary-header" aria-hidden="true">
+          <!-- award icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/>
+            <circle cx="12" cy="8" r="6"/>
+          </svg>
+          <span class="secondary-domain">Certification</span>
         </div>
+        <h3 class="course-title-secondary">Claude Certified Architect Prep (CCA-F)</h3>
+        <p class="course-description-secondary">Full preparation across all five CCA-F exam domains — two interactive courses, nine extension modules, MCQ practice, and a domain-mapped exam digest.</p>
+        <div class="course-meta-secondary">2 courses · 9 extensions</div>
+        <a href="https://claude-certified-architect-prep-two.vercel.app" class="btn btn-primary course-cta">Start Learning →</a>
       </div>
 
-      <!-- Course 6: Topic Briefer Collection -->
-      <div class="course-card">
-        <div class="course-icon">📄</div>
-        <div class="course-content">
-          <span class="course-status status-new">NEW</span>
-          <h3 class="course-title">Topic Briefer — Deep Dive AI Briefs</h3>
-          <p class="course-description">Standalone deep-dive explainers on Claude SDK 101, building agents in Claude Code, PyCharm setup for agents, ontology & knowledge graphs, and LLM intelligence foundations.</p>
-          <div class="course-duration">5 briefs • 30–60 min each • Self-paced</div>
-          <a href="https://topic-briefer.vercel.app" class="btn btn-primary course-cta">Browse Briefs →</a>
+      <!-- Course 6: Topic Briefer -->
+      <div class="course-card-secondary">
+        <div class="secondary-header" aria-hidden="true">
+          <!-- file-text icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+            <path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>
+          </svg>
+          <span class="secondary-domain">Reference</span>
         </div>
+        <h3 class="course-title-secondary">Topic Briefer — Deep Dive Explainers</h3>
+        <p class="course-description-secondary">Standalone deep-reads on specific AI topics. Not a course — no prerequisite chain. One concept per file, 20–45 minutes each. Start where you need to.</p>
+        <div class="course-meta-secondary">14 briefs · 20–45 min each</div>
+        <a href="https://topic-briefer.vercel.app" class="btn btn-primary course-cta">Browse Briefs →</a>
       </div>
+
     </div>
   </section>
 
@@ -531,7 +540,7 @@
 
     <div class="footer-bottom">
       <div>&copy; 2026 NEURAL HUB. All rights reserved.</div>
-      <div>Built with 🧠 + ✨</div>
+      <div class="footer-mission">Built for practitioners who want to understand AI systems deeply, not just use them.</div>
     </div>
   </footer>
 </body>
