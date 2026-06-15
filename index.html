@@ -54,8 +54,8 @@
     header {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       box-shadow: var(--shadow-sm);
@@ -63,29 +63,28 @@
     .header-inner {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 var(--spacing-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      height: 64px;
+      gap: 4px;
     }
     .logo {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       color: var(--text-primary);
       text-decoration: none;
-      letter-spacing: -0.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
     .logo span { color: var(--accent-warm); }
-    nav { display: flex; gap: var(--spacing-lg); align-items: center; }
-    nav a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
+    .logo-tagline {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
-    nav a:hover { color: var(--accent-warm); }
 
     /* ═══════════════════════════════════════════════════════════════════════
        BUTTONS
@@ -414,9 +413,7 @@
   <header>
     <div class="header-inner">
       <a href="#" class="logo">NEURAL <span>HUB</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#courses">Courses</a>
-      </nav>
+      <span class="logo-tagline">AI courses for practitioners</span>
     </div>
   </header>
 
