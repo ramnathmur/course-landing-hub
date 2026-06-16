@@ -128,8 +128,9 @@
       margin-bottom: var(--spacing-2xl);
     }
     .section-title {
-      font-size: 24px;
-      font-weight: 600;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       margin-bottom: var(--spacing-xs);
       color: var(--text-primary);
     }
@@ -393,6 +394,120 @@
     /* ═══════════════════════════════════════════════════════════════════════
        RESPONSIVE
        ═══════════════════════════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════════════════════════════ */
+    .hero-section {
+      background: #0f1221;
+      background-image:
+        radial-gradient(ellipse 80% 70% at 50% -10%, rgba(245,158,11,0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 110%, rgba(20,184,166,0.14) 0%, transparent 55%);
+      padding: 80px var(--spacing-lg) 72px;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-warm);
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .hero-accent { color: var(--accent-warm); }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 28px;
+    }
+    .hero-stat-sep {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.10);
+    }
+    .hero-stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: rgba(255,255,255,0.38);
+    }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-warm);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.38);
+      font-family: var(--font-family);
+    }
+    .btn-hero:hover {
+      background: #d97706;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(245,158,11,0.45);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       GRADIENT CARD BANDS — featured cards
+       ═══════════════════════════════════════════════════════════════════════ */
+    #card-llm .course-icon-featured {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0e7490 100%);
+      border-bottom: none;
+      height: 100px;
+    }
+    #card-agents .course-icon-featured {
+      background: linear-gradient(135deg, #92400e 0%, #be185d 100%);
+      border-bottom: none;
+      height: 100px;
+    }
+    #card-llm .course-icon-featured svg,
+    #card-agents .course-icon-featured svg {
+      width: 48px;
+      height: 48px;
+      stroke: rgba(255,255,255,0.92);
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.28));
+    }
+
     @media (max-width: 900px) {
       .courses-featured { grid-template-columns: 1fr; }
     }
@@ -417,7 +532,33 @@
     </div>
   </header>
 
-  <!-- COURSES SECTION — opens immediately, no hero delay -->
+  <!-- HERO -->
+  <section class="hero-section" aria-label="Neural Hub introduction">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">AI Learning · Built for Practitioners</div>
+      <h1 class="hero-headline">Master AI.<br><span class="hero-accent">Build What Matters.</span></h1>
+      <p class="hero-sub">Deep-learning materials that go past surface tutorials — from how LLMs actually think to production-grade agent architecture.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">8</span>
+          <span class="hero-stat-label">Courses</span>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100+</span>
+          <span class="hero-stat-label">Concepts</span>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">Free</span>
+          <span class="hero-stat-label">No signup</span>
+        </div>
+      </div>
+      <a href="#courses" class="btn-hero">Explore Courses ↓</a>
+    </div>
+  </section>
+
+  <!-- COURSES SECTION -->
   <section class="section" id="courses" aria-label="Course catalogue">
 
     <div class="section-header">
